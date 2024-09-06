@@ -1,0 +1,6 @@
+@MockingJson_HostAddress = http://localhost:5204
+
+GET {{MockingJson_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
