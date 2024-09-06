@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Side-by-Side Input/Output</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .text-boxes {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 48%;
+            height: 200px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        select, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="text-boxes">
+        <textarea id="inputBox" placeholder="Enter input here"></textarea>
+        <textarea id="outputBox" placeholder="Output will be displayed here" readonly></textarea>
+    </div>
+    
+    <div class="controls">
+        <select id="actionSelect">
+            <option value="copy">Copy Input</option>
+            <option value="uppercase">Uppercase Input</option>
+        </select>
+        <div>
+            <button onclick="processInput()">Execute</button>
+            <button onclick="clearOutput()">Clear</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function processInput() {
+        var inputText = document.getElementById('inputBox').value;
+        var outputBox = document.getElementById('outputBox');
+        var action = document.getElementById('actionSelect').value;
+        
+        if (action === 'copy') {
+            outputBox.value = inputText;
+        } else if (action === 'uppercase') {
+            outputBox.value = inputText.toUpperCase();
+        }
+    }
+    
+    function clearOutput() {
+        document.getElementById('outputBox').value = '';
+    }
+</script>
+
+</body>
+</html>
